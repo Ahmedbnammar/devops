@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysqldb
+  labels:
+    app: mysqldb
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysqldb
+      tier: database
+  template:
+    metadata:
+      labels:
+        app: mysqldb
+        tier: database
+    spec:
+      containers:
+        - image: mysql:latest
+          name: mysqldb
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: achatdb
+            - name: MYSQL_PASSWORD
+              value: root
+          ports:
+            - containerPort: 3306
+              name: mysql
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+    tier: database
+spec:
+  ports:
+    - port: 3306
+      targetPort: 3306
+  selector:
+    app: mysqldb
+    tier: database
+  clusterIP: None
+

@@ -6,8 +6,8 @@ spec:
   selector:
     app: test-achat
   ports:
-  - port: 80
-    targetPort: 8089
-    protocol: TCP
+    - protocol: TCP
+      port: 80
+      targetPort: 8089
   type: NodePort
 

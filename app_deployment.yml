@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-achat-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test-achat
+  template:
+    metadata:
+      labels:
+        app: test-achat
+    spec:
+      containers:
+        - name: test-achat
+          image: nadinemili/testachat:latest
+          resources:
+            requests:
+              cpu: "100m"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mysql://mysql:3306/achatdb?autoReconnect=true&failOverReadOnly=false&maxReconnects=10"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "root"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "root"
+          ports:
+            - containerPort: 8089
+
