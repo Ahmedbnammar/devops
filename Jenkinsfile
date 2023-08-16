@@ -12,9 +12,9 @@ pipeline {
                 echo 'test app'
             }
         }
-        stage('Hello') {
+        stage('Deploy') {
             steps {
-                echo 'hello'
+                echo 'deploy'
             }
         }
     }
