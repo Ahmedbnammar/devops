@@ -23,5 +23,5 @@ Run and Deploy Spring Boot Application With MySQL on Kubernetes cluster ( master
     <img src="https://github.com/NadineMili/Devops/assets/80693299/efe8c64b-244e-429a-baea-2c0989b57c46" alt="QL Icon" width="100" height="100">
   </a>
 </p>
-Jenkins integration with kubernetes
+
 CI/CD Pipeline for kubernetes deployment using Jenkins
