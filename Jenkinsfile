@@ -1,20 +1,54 @@
 pipeline {
-    agent any 
-
-    stages { 
-        stage('Build') {
+    agent any
+    
+    stages {
+        stage("Git Clone") {
             steps {
-                echo 'build app'
+                git credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/NadineMili/Devops.git'
             }
         }
-        stage('Test') {
+        
+        stage('Maven Build') {
             steps {
-                echo 'test app'
+                sh 'mvn clean install'
             }
         }
-        stage('Deploy') {
+        
+        stage("Docker build") {
             steps {
-                echo 'deploy'
+                sh 'docker version'
+                sh 'docker build -t nadine-docker .'
+                sh 'docker image list'
+                sh 'docker tag nadine-docker nadinemili/nadine-docker:nadine-docker'
+            }
+        }
+        
+        stage("Docker Login") {
+            steps {
+                withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
+                    sh 'docker login -u nadinemili -p $PASSWORD'
+                }
+            }
+        }
+        
+        stage("Push Image to Docker Hub") {
+            steps {
+                sh 'docker push nadinemili/nadine-docker:nadine-docker'
+            }
+        }
+        
+        stage("SSH Into k8s Server") {
+            steps {
+                script {
+                    def remote = [:]
+                    remote.name = 'master'
+                    remote.host = '192.168.1.101'
+                    remote.user = 'master'
+                    remote.password = 'master'
+                    remote.allowAnyHosts = true
+                    
+                    sshCommand remote: remote, command: 'kubectl get pods'
+                }
             }
         }
     }
