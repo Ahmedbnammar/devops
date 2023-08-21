@@ -46,6 +46,12 @@ pipeline {
                     remote.user = 'master'
                     remote.password = 'master'
                     remote.allowAnyHosts = true
+                    
+                    stage('Put deployment.yml into k8smaster') {
+                        sshPut remote: remote, from: 'app_deployment.yml', into: '.'
+                        sshPut remote: remote, from: 'app_servicce.yml', into: '.'
+                        sshPut remote: remote, from: 'db_deployment.yml', into: '.'
+                    }
                 }
             }
         }
