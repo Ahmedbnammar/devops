@@ -46,8 +46,6 @@ pipeline {
                     remote.user = 'master'
                     remote.password = 'master'
                     remote.allowAnyHosts = true
-                    
-                    sshCommand remote: remote, command: 'kubectl get pods'
                 }
             }
         }
