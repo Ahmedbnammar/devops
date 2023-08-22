@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calico-kube-controllers
+  namespace: calico-system
+spec:
+  template:
+    spec:
+      containers:
+        - name: kube-controllers
+          image: calico-kube-controllers-5579b88f99-vxjjn
+          volumeMounts:
+            - name: config-volume
+              mountPath: /data
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: configVolume
