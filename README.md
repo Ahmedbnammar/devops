@@ -45,7 +45,7 @@ Monitoring using Prometheus & Grafana
 
 <p>In this project, I embarked on an exciting journey into the world of DevOps, exploring various technologies and practices that empower me to efficiently manage and deploy applications. Through the integration of Kubernetes, Jenkins, Prometheus, and Grafana, I have successfully orchestrated a robust and automated CI/CD pipeline for my Spring Boot application with MySQL.
 
-By leveraging Docker containers, Kubernetes allowed me to seamlessly scale my application across a master and two worker nodes, ensuring high availability and reliability. This microservices architecture enhances the overall resilience of the system while simplifying deployment and maintenance.
+By leveraging Docker containers, Kubernetes allowed me to seamlessly scale my application across a master and two worker nodes, ensuring high availability and reliability.
 
 The CI/CD pipeline, powered by Jenkins, automates the build, testing, and deployment stages, enabling rapid and consistent delivery of new features and updates. This not only accelerates development but also ensures that the application meets quality standards before reaching the end-users.
 
