@@ -47,11 +47,16 @@ pipeline {
                     remote.password = 'master'
                     remote.allowAnyHosts = true
                     
-                    stage('Put deployment.yml into k8smaster') {
+                    stage('Put config files into k8smaster') {
                         sshPut remote: remote, from: 'app_deployment.yml', into: '.'
                         sshPut remote: remote, from: 'app_servicce.yml', into: '.'
                         sshPut remote: remote, from: 'db_deployment.yml', into: '.'
                     }
+                     stage('Deploy') {
+                         sshCommand remote: remote, command: "export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl apply -f app_deployment.yml"
+                         sshCommand remote: remote, command: "export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl apply -f app_servicce.yml"
+                         sshCommand remote: remote, command: "export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl apply -f db_deployment.yml"
+        }
                 }
             }
         }
