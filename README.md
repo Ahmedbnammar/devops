@@ -33,3 +33,8 @@ CI/CD Pipeline using Jenkins
   </p>
 
 Monitoring using Prometheus & Grafana
+<p align="center">
+  <a href="https://github.com/NadineMili/Devops/assets/80693299/c70e72c1-52d8-4fbd-aa54-73f8fe26f63b">
+    <img src="https://github.com/NadineMili/Devops/assets/80693299/c70e72c1-52d8-4fbd-aa54-73f8fe26f63b" alt="Premetheus Icon" width="100" height="100">
+  </a>
+  </p>
