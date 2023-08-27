@@ -37,4 +37,7 @@ Monitoring using Prometheus & Grafana
   <a href="https://github.com/NadineMili/Devops/assets/80693299/c88b7142-632d-44e6-aadd-f0f193c958fa">
     <img src="https://github.com/NadineMili/Devops/assets/80693299/c88b7142-632d-44e6-aadd-f0f193c958fa" alt="Premetheus Icon" width="100" height="100">
   </a>
+    <a href="https://github.com/NadineMili/Devops/assets/80693299/7ee58494-2cc7-4aae-91b4-bcd5ffc73122">
+    <img src="https://github.com/NadineMili/Devops/assets/80693299/7ee58494-2cc7-4aae-91b4-bcd5ffc73122" alt="Premetheus Icon" width="100" height="100">
+  </a>
   </p>
