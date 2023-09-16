@@ -1,4 +1,4 @@
-<h1 align="center">Hi 👋, This is my first project on DevOps</h1>
+<h1 align="center">Hi 👋, This is my first DevOps project</h1>
 Run and Deploy Spring Boot Application With MySQL on Kubernetes cluster ( master and two workers) 
 
 <p align="center">
