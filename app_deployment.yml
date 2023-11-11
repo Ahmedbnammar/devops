@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: test-achat
-          image: nadinemili/testachat:latest
+          image: nadinemilli/achat:latest
           resources:
             requests:
               cpu: "100m"
