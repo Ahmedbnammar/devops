@@ -17,9 +17,9 @@ pipeline {
         stage("Docker build") {
             steps {
                 sh 'docker version'
-                sh 'docker build -t nadine-docker .'
+                sh 'docker build -t nadinemilli/achat .'
                 sh 'docker image list'
-                sh 'docker tag nadine-docker nadinemili/testachat:latest'
+                sh 'docker tag nadine-docker nadinemilli/achat:latest'
             }
         }
         
@@ -33,7 +33,7 @@ pipeline {
         
         stage("Push Image to Docker Hub") {
             steps {
-                sh 'docker push nadinemili/testachat:latest'
+                sh 'docker push nadinemilli/achat:latest'
             }
         }
         
