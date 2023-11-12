@@ -10,9 +10,10 @@ services:
       - '3306:3306'
     volumes:
       - db_vol:/var/lib/mysql:rw
+
   backend:
     container_name: 'backendserver'
-    image: nadinemili/testachat
+    image: nadinemilli/achat
     ports:
       - '8089:8089'
     restart: unless-stopped
@@ -22,6 +23,42 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
     depends_on:
       - mysqldb
-  
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - prometheus_data:/prometheus
+      - prometheus_config:/etc/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - common-net
+
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - grafana_config:/etc/grafana
+      - grafana_plugins:/var/lib/grafana/plugins
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - common-net
+
 volumes:
-  db_vol: {}
+  db_vol:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  nexus_data:
+  prometheus_config:
+  prometheus_data:
+  grafana_data:
+  grafana_config:
+  grafana_plugins:
+
+networks:
+  common-net:
+    driver: bridge
